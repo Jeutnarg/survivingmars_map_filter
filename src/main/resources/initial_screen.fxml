@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.CheckComboBox?>
+
+<GridPane alignment="center" hgap="10" minHeight="500.0" minWidth="700.0" prefHeight="600.0" prefWidth="1300.0" vgap="10" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.sm.jk.application.Controller">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <AnchorPane prefHeight="600.0" prefWidth="825.0" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <VBox prefHeight="595.0" prefWidth="1039.0" HBox.hgrow="NEVER">
+                     <children>
+                        <HBox prefWidth="200.0" VBox.vgrow="NEVER">
+                           <children>
+                              <Button fx:id="button_fileSelector" mnemonicParsing="false" onAction="#fileSelectorSelected" text="Choose a ChoGGi file to load" />
+                              <Label fx:id="label_fileSelector" text="no default file">
+                                 <padding>
+                                    <Insets left="15.0" top="5.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <FlowPane hgap="15.0" VBox.vgrow="NEVER">
+                           <children>
+                              <VBox prefWidth="125.0">
+                                 <children>
+                                    <Label text="Coordinates" />
+                                    <TextField text="Enter Coordinates" />
+                                 </children>
+                              </VBox>
+                              <VBox prefWidth="100.0">
+                                 <children>
+                                    <Label text="Topography" />
+                                    <CheckComboBox fx:id="combobox_topography_options" prefWidth="150.0" />
+                                 </children>
+                              </VBox>
+                              <VBox prefWidth="100.0">
+                                 <children>
+                                    <Label text="Map Type:" />
+                                    <CheckComboBox fx:id="combobox_maptype_options" prefWidth="150.0" />
+                                 </children>
+                              </VBox>
+                              <VBox prefWidth="100.0">
+                                 <children>
+                                    <Label text="Location" />
+                                    <CheckComboBox fx:id="combobox_location_options" prefWidth="150.0" />
+                                 </children>
+                              </VBox>
+                              <VBox prefWidth="100.0">
+                                 <children>
+                                    <Label text="Breakthrough+" />
+                                    <CheckComboBox fx:id="combobox_breakthroughplus_options" prefWidth="150.0" />
+                                 </children>
+                              </VBox>
+                              <VBox prefWidth="100.0">
+                                 <children>
+                                    <Label text="Breakthrough-" />
+                                    <CheckComboBox fx:id="combobox_breakthroughminus_options" prefWidth="150.0" />
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets left="5.0" top="5.0" />
+                           </padding>
+                        </FlowPane>
+                        <HBox prefWidth="200.0" spacing="15.0" VBox.vgrow="NEVER">
+                           <children>
+                              <VBox prefWidth="150.0">
+                                 <children>
+                                    <Label text="Metals" />
+                                    <CheckComboBox fx:id="combobox_resources_metal" prefWidth="150.0" />
+                                 </children>
+                              </VBox>
+                              <VBox prefWidth="150.0">
+                                 <children>
+                                    <Label text="Rare Metals" />
+                                    <CheckComboBox fx:id="combobox_resources_raremetals" prefWidth="150.0" />
+                                 </children>
+                              </VBox>
+                              <VBox prefWidth="150.0">
+                                 <children>
+                                    <Label text="Concrete" />
+                                    <CheckComboBox fx:id="combobox_resources_concrete" prefWidth="150.0" />
+                                 </children>
+                              </VBox>
+                              <VBox prefWidth="150.0">
+                                 <children>
+                                    <Label text="Water" />
+                                    <CheckComboBox fx:id="combobox_resources_water" prefWidth="150.0" />
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets left="5.0" top="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox spacing="15.0">
+                           <children>
+                              <VBox prefWidth="150.0">
+                                 <children>
+                                    <Label text="Dust Devils" />
+                                    <CheckComboBox fx:id="combobox_resources_dustdevils" prefWidth="150.0" />
+                                 </children>
+                              </VBox>
+                              <VBox prefWidth="150.0">
+                                 <children>
+                                    <Label text="Dust Storms" />
+                                    <CheckComboBox fx:id="combobox_resources_duststorms" prefWidth="150.0" />
+                                 </children>
+                              </VBox>
+                              <VBox prefWidth="150.0">
+                                 <children>
+                                    <Label text="Meteor Showers" />
+                                    <CheckComboBox fx:id="combobox_resources_meteorshowers" prefWidth="150.0" />
+                                 </children>
+                              </VBox>
+                              <VBox prefWidth="150.0">
+                                 <children>
+                                    <Label text="Cold Waves" />
+                                    <CheckComboBox fx:id="combobox_resources_coldwaves" prefWidth="150.0" />
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets left="5.0" top="10.0" />
+                           </padding>
+                        </HBox>
+                        <TableView fx:id="table" prefHeight="412.0" prefWidth="1000.0" VBox.vgrow="ALWAYS">
+                          <columns>
+                            <TableColumn fx:id="table_coordinates" prefWidth="90.0" text="Coordinates" />
+                            <TableColumn fx:id="table_topography" prefWidth="145.0" text="Topography" />
+                              <TableColumn fx:id="table_altitude" prefWidth="67.0" text="Altitude" />
+                              <TableColumn fx:id="table_temperature" minWidth="0.0" prefWidth="83.0" text="Temperature" />
+                              <TableColumn fx:id="table_maptype" prefWidth="232.0" text="Map Type" />
+                              <TableColumn fx:id="table_location" prefWidth="124.0" text="Location" />
+                              <TableColumn fx:id="table_resources" prefWidth="106.0" text="Resources" />
+                              <TableColumn fx:id="table_threats" prefWidth="101.0" text="Threats" />
+                              <TableColumn fx:id="table_difficulty" text="Difficulty" />
+                          </columns>
+                           <VBox.margin>
+                              <Insets left="5.0" top="10.0" />
+                           </VBox.margin>
+                        </TableView>
+                     </children>
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </VBox>
+                  <VBox prefHeight="595.0" prefWidth="250.0" HBox.hgrow="NEVER">
+                     <children>
+                        <Label text="Map Breakthroughs" textAlignment="CENTER" VBox.vgrow="NEVER">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label text="Planetary Anomalies">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <ListView fx:id="mapdetails_breakthroughs1" prefHeight="111.0" prefWidth="250.0" VBox.vgrow="ALWAYS" />
+                        <Label text="Surface">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <ListView fx:id="mapdetails_breakthroughs2" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <Label text="Other">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <ListView fx:id="mapdetails_breakthroughs3" prefHeight="142.0" prefWidth="250.0" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets left="10.0" top="5.0" />
+         </padding>
+      </AnchorPane>
+   </children>
+</GridPane>
