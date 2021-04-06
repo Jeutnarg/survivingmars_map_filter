@@ -7,15 +7,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class DisplayMap {
-    private final SimpleStringProperty coordinates;
-    private final SimpleStringProperty topography;
-    private final SimpleIntegerProperty altitude;
-    private final SimpleIntegerProperty temperature;
-    private final SimpleStringProperty mapType;
-    private final SimpleStringProperty location;
-    private final SimpleStringProperty resources;
-    private final SimpleStringProperty threats;
-    private final SimpleIntegerProperty difficulty;
+    private SimpleStringProperty coordinates;
+    private SimpleStringProperty topography;
+    private SimpleIntegerProperty altitude;
+    private SimpleIntegerProperty temperature;
+    private SimpleStringProperty mapType;
+    private SimpleStringProperty location;
+    private SimpleStringProperty resources;
+    private SimpleStringProperty threats;
+    private SimpleIntegerProperty difficulty;
     private final List<String> breakthroughs;
 
     public DisplayMap(Map map) {
@@ -29,6 +29,11 @@ public class DisplayMap {
         threats = new SimpleStringProperty("DD"+map.getDustDevils()+"DS"+map.getDustStorms()+"MS"+map.getMeteors()+"CW"+map.getColdWave());
         difficulty = new SimpleIntegerProperty(map.getDifficulty());
         this.breakthroughs = map.getBreakthroughs().stream().map(b -> b.getName()).collect(Collectors.toList());
+    }
+
+    //for testing
+    public DisplayMap(List<String> breakthroughs) {
+        this.breakthroughs = breakthroughs;
     }
 
     public String getCoordinates() {

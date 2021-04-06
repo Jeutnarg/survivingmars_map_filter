@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import org.controlsfx.control.CheckComboBox;
 import org.sm.jk.application.model.DisplayMap;
+import org.sm.jk.application.utils.AdvancedBreakthroughParserUtil;
 import org.sm.jk.application.utils.ChoGGiParser;
 import org.sm.jk.application.utils.DisplayMapFilter;
 
@@ -54,6 +55,12 @@ public class Controller {
 
     @FXML
     private CheckComboBox<String> combobox_breakthroughminus_options;
+
+    @FXML
+    private CheckBox checkbox_advancedbreak;
+
+    @FXML
+    private TextArea textarea_advancedbreak;
 
     @FXML
     private CheckComboBox<Integer> combobox_resources_metal;
@@ -121,6 +128,7 @@ public class Controller {
     private Stage primaryStage;
     private DisplayMapFilter filterMaster;
     private FilteredList<DisplayMap> displayMapFilteredList;
+    private ChoGGiParser choGGiParser;
 
     @FXML
     void initialize() {
@@ -131,6 +139,8 @@ public class Controller {
         assert combobox_location_options != null : "fx:id=\"combobox_location_options\" was not injected: check your FXML file 'initial_screen.fxml'.";
         assert combobox_breakthroughplus_options != null : "fx:id=\"combobox_breakthroughplus_options\" was not injected: check your FXML file 'initial_screen.fxml'.";
         assert combobox_breakthroughminus_options != null : "fx:id=\"combobox_breakthroughminus_options\" was not injected: check your FXML file 'initial_screen.fxml'.";
+        assert checkbox_advancedbreak != null : "fx:id=\"checkbox_advancedbreak\" was not injected: check your FXML file 'initial_screen.fxml'.";
+        assert textarea_advancedbreak != null : "fx:id=\"textarea_advancedbreak\" was not injected: check your FXML file 'initial_screen.fxml'.";
         assert combobox_resources_metal != null : "fx:id=\"combobox_resources_metal\" was not injected: check your FXML file 'initial_screen.fxml'.";
         assert combobox_resources_raremetals != null : "fx:id=\"combobox_resources_raremetals\" was not injected: check your FXML file 'initial_screen.fxml'.";
         assert combobox_resources_concrete != null : "fx:id=\"combobox_resources_concrete\" was not injected: check your FXML file 'initial_screen.fxml'.";
@@ -203,7 +213,7 @@ public class Controller {
         fileChooser.setTitle("Select ChoGGi File");
         File choggiFile = fileChooser.showOpenDialog(primaryStage);
         if(choggiFile != null) {
-            ChoGGiParser choGGiParser = new ChoGGiParser();
+            choGGiParser = new ChoGGiParser();
             choGGiParser.parse(choggiFile);
             ObservableList<String> topographies = FXCollections.observableList(collectAndSort(choGGiParser.getTopographies()));
             ObservableList<String> mapTypes = FXCollections.observableList(collectAndSort(choGGiParser.getMapTypes()));
@@ -238,6 +248,19 @@ public class Controller {
         }
         else {
             label_fileSelector.setText("No file selected.");
+        }
+    }
+
+    @FXML
+    void advancedModeSwitched(ActionEvent event) {
+        filterMaster.setAdvancedMode(checkbox_advancedbreak.isSelected());
+    }
+
+    @FXML
+    void parseAdvanced(ActionEvent event) {
+        if(checkbox_advancedbreak.isSelected()) {
+            String advancedBreakthroughText = textarea_advancedbreak.getText();
+            filterMaster.updateAdvancedBreakthrough(AdvancedBreakthroughParserUtil.parseAdvancedBreakthroughs(advancedBreakthroughText, choGGiParser.getBreakthroughs()));
         }
     }
 

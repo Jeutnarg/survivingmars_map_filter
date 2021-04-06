@@ -10,6 +10,9 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class DisplayMapFilter {
+    private boolean useAdvancedBreakthrough;
+    private AdvancedBreakthroughPredicate advancedBreakthroughPredicate;
+    private AdvancedBreakthroughPredicate breakthroughPredicate;
     private Set<String> breakthroughsPlus  = new HashSet<>();
     private Set<String> breakthroughsMinus  = new HashSet<>();
     private Set<String> threatDustDevils = new HashSet<>();
@@ -30,7 +33,8 @@ public class DisplayMapFilter {
                 breakthroughsPlus.addAll(change.getAddedSubList());
                 breakthroughsPlus.removeAll(change.getRemoved());
             }
-            displayMapFilteredList.setPredicate(new DisplayPredicate());
+            if(!useAdvancedBreakthrough)
+                displayMapFilteredList.setPredicate(new DisplayPredicate());
         };
     }
 
@@ -40,7 +44,8 @@ public class DisplayMapFilter {
                 breakthroughsMinus.addAll(change.getAddedSubList());
                 breakthroughsMinus.removeAll(change.getRemoved());
             }
-            displayMapFilteredList.setPredicate(new DisplayPredicate());
+            if(!useAdvancedBreakthrough)
+                displayMapFilteredList.setPredicate(new DisplayPredicate());
         };
     }
 
@@ -154,23 +159,38 @@ public class DisplayMapFilter {
         };
     }
 
+    public void updateAdvancedBreakthrough(AdvancedBreakthroughPredicate advancedBreakthroughPredicate) {
+        this.advancedBreakthroughPredicate = advancedBreakthroughPredicate;
+    }
+
+    public void setAdvancedMode(boolean selected) {
+        this.useAdvancedBreakthrough = selected;
+    }
+
     private class DisplayPredicate implements Predicate<DisplayMap> {
         @Override
         public boolean test(DisplayMap map) {
-            if(!breakthroughsPlus.isEmpty()) {
-                for(String breakthroughName : breakthroughsPlus) {
-                    if(!map.getBreakthroughs().contains(breakthroughName)) {
-                        return false;
+
+            if(!useAdvancedBreakthrough) {
+                if(!breakthroughsPlus.isEmpty()) {
+                    for(String breakthroughName : breakthroughsPlus) {
+                        if(!map.getBreakthroughs().contains(breakthroughName)) {
+                            return false;
+                        }
                     }
                 }
-            }
-            if(!breakthroughsMinus.isEmpty()) {
-                for(String breakthroughName : breakthroughsMinus) {
-                    if(map.getBreakthroughs().contains(breakthroughName)) {
-                        return false;
+                if(!breakthroughsMinus.isEmpty()) {
+                    for(String breakthroughName : breakthroughsMinus) {
+                        if(map.getBreakthroughs().contains(breakthroughName)) {
+                            return false;
+                        }
                     }
                 }
+            } else {
+                if(!advancedBreakthroughPredicate.test(map))
+                    return false;
             }
+
             if(!topographies.isEmpty()) {
                 boolean match = false;
                 for(String topography : topographies) {
