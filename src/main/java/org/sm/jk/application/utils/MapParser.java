@@ -17,7 +17,13 @@ public class MapParser {
         result.setAltitude(Integer.parseInt(parts[counter++]));
         result.setTemperature(Integer.parseInt(parts[counter++]));
         result.setMetals(Integer.parseInt(parts[counter++]));
-        result.setRareMetals(Integer.parseInt(parts[counter++]));
+        if(parts[counter].isEmpty()) {
+            result.setRareMetals(result.getMetals());
+            counter++;
+        }
+        else {
+            result.setRareMetals(Integer.parseInt(parts[counter++]));
+        }
         result.setConcrete(Integer.parseInt(parts[counter++]));
         result.setWater(Integer.parseInt(parts[counter++]));
         result.setDustDevils(Integer.parseInt(parts[counter++]));

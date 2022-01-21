@@ -232,15 +232,15 @@ public class Controller {
             replaceListeners(displayMapFilteredList, filterMaster);
             table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
             table.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-                if(newSelection != null) {
+                if(newSelection != null && newSelection.getBreakthroughs() != null && newSelection.getBreakthroughs().size() > 13) {
                     mapdetails_breakthroughs1.setItems(FXCollections.observableList(newSelection.getBreakthroughs().subList(0, 4)));
                     mapdetails_breakthroughs2.setItems(FXCollections.observableList(newSelection.getBreakthroughs().subList(4, 13)));
                     mapdetails_breakthroughs3.setItems(FXCollections.observableList(newSelection.getBreakthroughs().subList(13, newSelection.getBreakthroughs().size())));
                 }
                 else {
-                    mapdetails_breakthroughs1.getItems().clear();
-                    mapdetails_breakthroughs2.getItems().clear();
-                    mapdetails_breakthroughs3.getItems().clear();
+//                    mapdetails_breakthroughs1.getItems().clear();
+//                    mapdetails_breakthroughs2.getItems().clear();
+//                    mapdetails_breakthroughs3.getItems().clear();
                 }
             });
 
