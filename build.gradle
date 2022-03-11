@@ -15,7 +15,7 @@ plugins {
 sourceCompatibility = 14
 targetCompatibility = 14
 
-version = '0.0.2'
+version = '0.0.3'
 group = 'fi.pelam.gradlejavafxhelloworldapp'
 mainClassName = 'org.sm.jk.application.Main'
 

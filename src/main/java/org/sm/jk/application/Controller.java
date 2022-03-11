@@ -5,22 +5,16 @@ import java.net.URL;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import javafx.beans.InvalidationListener;
-import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 import org.controlsfx.control.CheckComboBox;
 import org.sm.jk.application.model.DisplayMap;
 import org.sm.jk.application.utils.AdvancedBreakthroughParserUtil;
@@ -120,8 +114,6 @@ public class Controller {
     private ListView<String> mapdetails_breakthroughs1;
     @FXML
     private ListView<String> mapdetails_breakthroughs2;
-    @FXML
-    private ListView<String> mapdetails_breakthroughs3;
     //
     //
     //
@@ -161,7 +153,6 @@ public class Controller {
         assert table_difficulty != null : "fx:id=\"table_difficulty\" was not injected: check your FXML file 'initial_screen.fxml'.";
         assert mapdetails_breakthroughs1 != null : "fx:id=\"mapdetails_breakthroughs1\" was not injected: check your FXML file 'initial_screen.fxml'.";
         assert mapdetails_breakthroughs2 != null : "fx:id=\"mapdetails_breakthroughs2\" was not injected: check your FXML file 'initial_screen.fxml'.";
-        assert mapdetails_breakthroughs3 != null : "fx:id=\"mapdetails_breakthroughs3\" was not injected: check your FXML file 'initial_screen.fxml'.";
 
         addNumbers(combobox_resources_metal);
         addNumbers(combobox_resources_raremetals);
@@ -232,10 +223,9 @@ public class Controller {
             replaceListeners(displayMapFilteredList, filterMaster);
             table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
             table.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-                if(newSelection != null && newSelection.getBreakthroughs() != null && newSelection.getBreakthroughs().size() > 13) {
+                if(newSelection != null && newSelection.getBreakthroughs() != null && newSelection.getBreakthroughs().size() > 11) {
                     mapdetails_breakthroughs1.setItems(FXCollections.observableList(newSelection.getBreakthroughs().subList(0, 4)));
-                    mapdetails_breakthroughs2.setItems(FXCollections.observableList(newSelection.getBreakthroughs().subList(4, 13)));
-                    mapdetails_breakthroughs3.setItems(FXCollections.observableList(newSelection.getBreakthroughs().subList(13, newSelection.getBreakthroughs().size())));
+                    mapdetails_breakthroughs2.setItems(FXCollections.observableList(newSelection.getBreakthroughs().subList(4, 12)));
                 }
                 else {
 //                    mapdetails_breakthroughs1.getItems().clear();

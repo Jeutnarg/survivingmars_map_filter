@@ -32,8 +32,8 @@ public class MapParser {
         result.setColdWave(Integer.parseInt(parts[counter++]));
         result.setMapName(parts[counter++]);
         result.setNamedLocation(parts[counter++]);
-        for(int i = 0; i < 17; i++) {
-            result.addBreakthrough(BreakthroughParser.parse(parts[counter++]));
+        for(int i = 0; i < 12; i++) {
+            result.addBreakthrough(BreakthroughParser.parse(parts[counter++].trim()));
         }
         return result;
     }
