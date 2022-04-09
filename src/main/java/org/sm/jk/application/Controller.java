@@ -20,6 +20,7 @@ import org.sm.jk.application.model.DisplayMap;
 import org.sm.jk.application.utils.AdvancedBreakthroughParserUtil;
 import org.sm.jk.application.utils.ChoGGiParser;
 import org.sm.jk.application.utils.DisplayMapFilter;
+import org.sm.jk.application.utils.PreferenceUtil;
 
 public class Controller {
 
@@ -201,9 +202,12 @@ public class Controller {
     @FXML
     void fileSelectorSelected(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialDirectory(PreferenceUtil.getPreference());
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV's", "*.csv"));
         fileChooser.setTitle("Select ChoGGi File");
         File choggiFile = fileChooser.showOpenDialog(primaryStage);
         if(choggiFile != null) {
+            PreferenceUtil.savePreference(choggiFile);
             choGGiParser = new ChoGGiParser();
             choGGiParser.parse(choggiFile);
             ObservableList<String> topographies = FXCollections.observableList(collectAndSort(choGGiParser.getTopographies()));

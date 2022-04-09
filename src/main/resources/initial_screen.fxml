@@ -46,113 +46,130 @@
                               <Insets left="5.0" />
                            </VBox.margin>
                         </HBox>
-                        <FlowPane hgap="15.0" VBox.vgrow="NEVER">
+                        <HBox prefHeight="219.0" prefWidth="1034.0">
                            <children>
-                              <VBox prefWidth="125.0">
+                              <VBox prefHeight="177.0" prefWidth="745.0">
                                  <children>
-                                    <Label text="Coordinates" />
-                                    <TextField text="Enter Coordinates" />
+                                    <FlowPane hgap="15.0" prefHeight="65.0" prefWidth="750.0" VBox.vgrow="NEVER">
+                                       <children>
+                                          <VBox prefHeight="55.0" prefWidth="125.0">
+                                             <children>
+                                                <Label text="Coordinates" />
+                                                <TextField text="Enter Coordinates" />
+                                             </children>
+                                          </VBox>
+                                          <VBox prefHeight="52.0" prefWidth="100.0">
+                                             <children>
+                                                <Label text="Topography" />
+                                                <CheckComboBox fx:id="combobox_topography_options" prefWidth="145.0" />
+                                             </children>
+                                          </VBox>
+                                          <VBox prefHeight="55.0" prefWidth="100.0">
+                                             <children>
+                                                <Label text="Map Type:" />
+                                                <CheckComboBox fx:id="combobox_maptype_options" prefWidth="145.0" />
+                                             </children>
+                                          </VBox>
+                                          <VBox prefHeight="55.0" prefWidth="100.0">
+                                             <children>
+                                                <Label text="Location" />
+                                                <CheckComboBox fx:id="combobox_location_options" prefWidth="145.0" />
+                                             </children>
+                                          </VBox>
+                                          <VBox prefHeight="55.0" prefWidth="110.0">
+                                             <children>
+                                                <Label text="Breakthrough+" />
+                                                <CheckComboBox fx:id="combobox_breakthroughplus_options" prefWidth="145.0" />
+                                             </children>
+                                          </VBox>
+                                          <VBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="55.0" prefWidth="110.0">
+                                             <children>
+                                                <Label text="Breakthrough-" />
+                                                <CheckComboBox fx:id="combobox_breakthroughminus_options" prefWidth="145.0" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                       <padding>
+                                          <Insets left="5.0" top="5.0" />
+                                       </padding>
+                                    </FlowPane>
+                                    <HBox prefHeight="66.0" prefWidth="750.0" spacing="15.0" VBox.vgrow="NEVER">
+                                       <children>
+                                          <VBox prefWidth="150.0">
+                                             <children>
+                                                <Label text="Metals" />
+                                                <CheckComboBox fx:id="combobox_resources_metal" prefWidth="148.0" />
+                                             </children>
+                                          </VBox>
+                                          <VBox prefWidth="150.0">
+                                             <children>
+                                                <Label text="Rare Metals" />
+                                                <CheckComboBox fx:id="combobox_resources_raremetals" prefWidth="148.0" />
+                                             </children>
+                                          </VBox>
+                                          <VBox prefWidth="150.0">
+                                             <children>
+                                                <Label text="Concrete" />
+                                                <CheckComboBox fx:id="combobox_resources_concrete" prefWidth="148.0" />
+                                             </children>
+                                          </VBox>
+                                          <VBox prefWidth="150.0">
+                                             <children>
+                                                <Label text="Water" />
+                                                <CheckComboBox fx:id="combobox_resources_water" prefWidth="148.0" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                       <padding>
+                                          <Insets left="5.0" top="10.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox spacing="15.0">
+                                       <children>
+                                          <VBox prefWidth="150.0">
+                                             <children>
+                                                <Label text="Dust Devils" />
+                                                <CheckComboBox fx:id="combobox_resources_dustdevils" prefWidth="150.0" />
+                                             </children>
+                                          </VBox>
+                                          <VBox prefWidth="150.0">
+                                             <children>
+                                                <Label text="Dust Storms" />
+                                                <CheckComboBox fx:id="combobox_resources_duststorms" prefWidth="150.0" />
+                                             </children>
+                                          </VBox>
+                                          <VBox prefWidth="150.0">
+                                             <children>
+                                                <Label text="Meteor Showers" />
+                                                <CheckComboBox fx:id="combobox_resources_meteorshowers" prefWidth="150.0" />
+                                             </children>
+                                          </VBox>
+                                          <VBox prefWidth="150.0">
+                                             <children>
+                                                <Label text="Cold Waves" />
+                                                <CheckComboBox fx:id="combobox_resources_coldwaves" prefWidth="150.0" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                       <padding>
+                                          <Insets left="5.0" top="10.0" />
+                                       </padding>
+                                    </HBox>
                                  </children>
                               </VBox>
-                              <VBox prefWidth="100.0">
+                              <VBox prefHeight="183.0" prefWidth="293.0">
                                  <children>
-                                    <Label text="Topography" />
-                                    <CheckComboBox fx:id="combobox_topography_options" prefWidth="150.0" />
-                                 </children>
-                              </VBox>
-                              <VBox prefWidth="100.0">
-                                 <children>
-                                    <Label text="Map Type:" />
-                                    <CheckComboBox fx:id="combobox_maptype_options" prefWidth="150.0" />
-                                 </children>
-                              </VBox>
-                              <VBox prefWidth="100.0">
-                                 <children>
-                                    <Label text="Location" />
-                                    <CheckComboBox fx:id="combobox_location_options" prefWidth="150.0" />
-                                 </children>
-                              </VBox>
-                              <VBox prefWidth="100.0">
-                                 <children>
-                                    <Label text="Breakthrough+" />
-                                    <CheckComboBox fx:id="combobox_breakthroughplus_options" prefWidth="150.0" />
-                                 </children>
-                              </VBox>
-                              <VBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="114.0">
-                                 <children>
-                                    <Label text="Breakthrough-" />
-                                    <CheckComboBox fx:id="combobox_breakthroughminus_options" prefWidth="150.0" />
-                                    <CheckBox fx:id="checkbox_advancedbreak" mnemonicParsing="false" onAction="#advancedModeSwitched" prefHeight="18.0" prefWidth="111.0" text="Advanced Mode" />
+                                    <TextArea fx:id="textarea_advancedbreak" prefHeight="100.0" prefWidth="300.0" text="(advanced breakthrough input area)&#10;&#10;Example: Eternal Fusion &amp;&amp; (Forever Young || Service Bots) will give Eternal Fusion and maps that contain at least one of the other two" wrapText="true" />
+                                    <HBox prefHeight="65.0" prefWidth="300.0">
+                                       <children>
+                                          <CheckBox fx:id="checkbox_advancedbreak" mnemonicParsing="false" onAction="#advancedModeSwitched" prefHeight="18.0" prefWidth="179.0" text="Enable Advanced Mode" />
+                                          <TextArea editable="false" prefHeight="63.0" prefWidth="161.0" text="Will ignore Breakthrough+ and - dropdowns if selected" wrapText="true" />
+                                       </children>
+                                    </HBox>
                                     <Button mnemonicParsing="false" onAction="#parseAdvanced" text="Parse" />
                                  </children>
                               </VBox>
-                              <TextArea fx:id="textarea_advancedbreak" prefHeight="100.0" prefWidth="300.0" text="(advanced breakthrough)" />
                            </children>
-                           <padding>
-                              <Insets left="5.0" top="5.0" />
-                           </padding>
-                        </FlowPane>
-                        <HBox prefWidth="200.0" spacing="15.0" VBox.vgrow="NEVER">
-                           <children>
-                              <VBox prefWidth="150.0">
-                                 <children>
-                                    <Label text="Metals" />
-                                    <CheckComboBox fx:id="combobox_resources_metal" prefWidth="150.0" />
-                                 </children>
-                              </VBox>
-                              <VBox prefWidth="150.0">
-                                 <children>
-                                    <Label text="Rare Metals" />
-                                    <CheckComboBox fx:id="combobox_resources_raremetals" prefWidth="150.0" />
-                                 </children>
-                              </VBox>
-                              <VBox prefWidth="150.0">
-                                 <children>
-                                    <Label text="Concrete" />
-                                    <CheckComboBox fx:id="combobox_resources_concrete" prefWidth="150.0" />
-                                 </children>
-                              </VBox>
-                              <VBox prefWidth="150.0">
-                                 <children>
-                                    <Label text="Water" />
-                                    <CheckComboBox fx:id="combobox_resources_water" prefWidth="150.0" />
-                                 </children>
-                              </VBox>
-                           </children>
-                           <padding>
-                              <Insets left="5.0" top="10.0" />
-                           </padding>
-                        </HBox>
-                        <HBox spacing="15.0">
-                           <children>
-                              <VBox prefWidth="150.0">
-                                 <children>
-                                    <Label text="Dust Devils" />
-                                    <CheckComboBox fx:id="combobox_resources_dustdevils" prefWidth="150.0" />
-                                 </children>
-                              </VBox>
-                              <VBox prefWidth="150.0">
-                                 <children>
-                                    <Label text="Dust Storms" />
-                                    <CheckComboBox fx:id="combobox_resources_duststorms" prefWidth="150.0" />
-                                 </children>
-                              </VBox>
-                              <VBox prefWidth="150.0">
-                                 <children>
-                                    <Label text="Meteor Showers" />
-                                    <CheckComboBox fx:id="combobox_resources_meteorshowers" prefWidth="150.0" />
-                                 </children>
-                              </VBox>
-                              <VBox prefWidth="150.0">
-                                 <children>
-                                    <Label text="Cold Waves" />
-                                    <CheckComboBox fx:id="combobox_resources_coldwaves" prefWidth="150.0" />
-                                 </children>
-                              </VBox>
-                           </children>
-                           <padding>
-                              <Insets left="5.0" top="10.0" />
-                           </padding>
                         </HBox>
                         <TableView fx:id="table" prefHeight="412.0" prefWidth="1000.0" VBox.vgrow="ALWAYS">
                           <columns>
