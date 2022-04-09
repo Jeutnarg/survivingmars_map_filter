@@ -7,7 +7,7 @@ plugins {
 sourceCompatibility = 14
 targetCompatibility = 14
 
-version = '0.1.0'
+version = '0.1.1'
 group = 'org.sm'
 mainClassName = 'org.sm.jk.application.JavaBullcrapMain'
 

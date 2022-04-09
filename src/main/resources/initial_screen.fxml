@@ -55,7 +55,7 @@
                                           <VBox prefHeight="55.0" prefWidth="125.0">
                                              <children>
                                                 <Label text="Coordinates" />
-                                                <TextField text="Enter Coordinates" />
+                                                <TextField fx:id="textinput_coordinates" text="Enter Coordinates" />
                                              </children>
                                           </VBox>
                                           <VBox prefHeight="52.0" prefWidth="100.0">

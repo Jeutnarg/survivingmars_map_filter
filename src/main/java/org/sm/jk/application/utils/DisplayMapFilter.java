@@ -1,5 +1,6 @@
 package org.sm.jk.application.utils;
 
+import javafx.beans.value.ChangeListener;
 import javafx.collections.ListChangeListener;
 import javafx.collections.transformation.FilteredList;
 import org.sm.jk.application.model.DisplayMap;
@@ -13,6 +14,7 @@ public class DisplayMapFilter {
     private boolean useAdvancedBreakthrough;
     private AdvancedBreakthroughPredicate advancedBreakthroughPredicate;
     private AdvancedBreakthroughPredicate breakthroughPredicate;
+    private String coordinates = "";
     private Set<String> breakthroughsPlus  = new HashSet<>();
     private Set<String> breakthroughsMinus  = new HashSet<>();
     private Set<String> threatDustDevils = new HashSet<>();
@@ -26,6 +28,13 @@ public class DisplayMapFilter {
     private Set<String> topographies  = new HashSet<>();
     private Set<String> mapTypes  = new HashSet<>();
     private Set<String> locations  = new HashSet<>();
+
+    public ChangeListener genCoordinateListener(FilteredList<DisplayMap> displayMapFilteredList) {
+        return (observable, oldValue, newValue) -> {
+            coordinates = newValue.toString();
+            displayMapFilteredList.setPredicate(new DisplayPredicate());
+        };
+    }
 
     public ListChangeListener<String> genBreakthroughPlusListener(FilteredList<DisplayMap> displayMapFilteredList) {
         return change -> {
@@ -189,6 +198,12 @@ public class DisplayMapFilter {
             } else {
                 if(!advancedBreakthroughPredicate.test(map))
                     return false;
+            }
+
+            if(!coordinates.isEmpty() && !coordinates.startsWith("En")) {
+                if(!map.getCoordinates().contains(coordinates)) {
+                    return false;
+                }
             }
 
             if(!topographies.isEmpty()) {

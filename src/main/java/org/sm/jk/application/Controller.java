@@ -5,10 +5,12 @@ import java.net.URL;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -35,6 +37,9 @@ public class Controller {
 
     @FXML
     private Label label_fileSelector;
+
+    @FXML
+    private TextField textinput_coordinates;
 
     @FXML
     private CheckComboBox<String> combobox_topography_options;
@@ -127,6 +132,7 @@ public class Controller {
     void initialize() {
         assert button_fileSelector != null : "fx:id=\"button_fileSelector\" was not injected: check your FXML file 'initial_screen.fxml'.";
         assert label_fileSelector != null : "fx:id=\"label_fileSelector\" was not injected: check your FXML file 'initial_screen.fxml'.";
+        assert textinput_coordinates != null : "fx:id=\"textinput_coordnates\" was not injected: check your FXML file 'initial_screen.fxml'.";
         assert combobox_topography_options != null : "fx:id=\"combobox_topography_options\" was not injected: check your FXML file 'initial_screen.fxml'.";
         assert combobox_maptype_options != null : "fx:id=\"combobox_maptype_options\" was not injected: check your FXML file 'initial_screen.fxml'.";
         assert combobox_location_options != null : "fx:id=\"combobox_location_options\" was not injected: check your FXML file 'initial_screen.fxml'.";
@@ -221,10 +227,13 @@ public class Controller {
             combobox_breakthroughplus_options.getItems().setAll(breakthroughs);
             combobox_breakthroughminus_options.getItems().setAll(breakthroughs2);
 
-            ObservableList<DisplayMap> displayMaps = FXCollections.observableList(choGGiParser.getDisplayMaps());
+            FilteredList<DisplayMap> displayMaps = new FilteredList(FXCollections.observableList(choGGiParser.getDisplayMaps()));
             displayMapFilteredList = new FilteredList(displayMaps, o -> true);
-            table.setItems(displayMapFilteredList);
+            SortedList<DisplayMap> sortedList = new SortedList(displayMapFilteredList);
+            sortedList.comparatorProperty().bind(table.comparatorProperty());
+            table.setItems(sortedList);
             replaceListeners(displayMapFilteredList, filterMaster);
+
             table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
             table.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
                 if(newSelection != null && newSelection.getBreakthroughs() != null && newSelection.getBreakthroughs().size() > 11) {
@@ -259,6 +268,8 @@ public class Controller {
     }
 
     private void replaceListeners(FilteredList<DisplayMap> displayMapFilteredList, DisplayMapFilter filterMaster) {
+        ChangeListener<String> listenerCoords = filterMaster.genCoordinateListener(displayMapFilteredList);
+        textinput_coordinates.textProperty().addListener(listenerCoords);
         ListChangeListener<String> listener = filterMaster.genBreakthroughPlusListener(displayMapFilteredList);
         combobox_breakthroughplus_options.getCheckModel().getCheckedItems().addListener(listener);
         ListChangeListener<String> listener2 = filterMaster.genBreakthroughMinusListener(displayMapFilteredList);
